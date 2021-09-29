@@ -1,8 +1,6 @@
 package scenarios;
 
-import org.openqa.selenium.JavascriptExecutor;
-import org.openqa.selenium.Keys;
-import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.*;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.annotations.Test;
 import setup.BaseTest;
@@ -29,7 +27,7 @@ public class WebMobileTests extends BaseTest {
 
         // Check that 1st search result contains searchPhrase
         getPage().getWebElement("searchField").sendKeys(searchPhrase, Keys.ENTER);
-        assert (getPage().getWebElements("searchResults").get(0).getText().contains(searchPhrase));
+        assert (getPage().getWebElements("searchResults").get(1).getText().contains(searchPhrase));
     }
 
 }
