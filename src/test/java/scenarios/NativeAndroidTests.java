@@ -4,10 +4,10 @@ import org.testng.annotations.Test;
 import setup.BaseTest;
 import setup.DataProviders;
 
-public class NativeMobileTests extends BaseTest {
+public class NativeAndroidTests extends BaseTest {
 
-    @Test(groups = {"native"}, description = "Registration and sign in test",
-            dataProvider = "dataProviderForNativeTest", dataProviderClass = DataProviders.class)
+    @Test(description = "Registration and sign in test", dataProvider = "dataProviderForNativeTest",
+            dataProviderClass = DataProviders.class)
     public void simpleNativeTest(String email, String username, String password, String pageTitle) throws
             IllegalAccessException, NoSuchFieldException, InstantiationException {
 

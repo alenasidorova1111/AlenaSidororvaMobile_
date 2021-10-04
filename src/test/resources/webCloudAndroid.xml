@@ -1,17 +1,13 @@
 <!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
-<suite name="Web mobile testing Suite">
+<suite name="Cloud web Android testing Suite">
+    <parameter name="cloud" value="true"/>
     <parameter name="appType" value="web"/>
-    <parameter name="deviceName" value="emulator-5554"/>
+    <parameter name="udid" value="3QX4C20618001895"/>
     <parameter name="platformName" value="Android"/>
     <parameter name="browserName" value="Chrome"/>
-    <test name="Web tests">
-        <groups>
-            <run>
-                <include name="web"/>
-            </run>
-        </groups>
-        <packages>
-            <package name="scenarios"/>
-        </packages>
+    <test name="Cloud web Android tests">
+        <classes>
+            <class name="scenarios.WebAndroidTests"/>
+        </classes>
     </test>
 </suite>

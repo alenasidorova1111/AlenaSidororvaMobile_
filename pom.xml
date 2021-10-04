@@ -8,10 +8,6 @@
     <artifactId>AlenaSidorovaMobile</artifactId>
     <version>1.0-SNAPSHOT</version>
 
-    <properties>
-        <token>4fEWcaP8SIH9szSJ/T5x1uT9obuTWYCjNZ+kSNHcr5fDglWr8gSvgSkAy9ZG1ESzBXGYcMbFPxyUBtaNXx0YR6FE1CBX0NHe1zIUvIMlmDjwlGmablKMXxwdqNZy4/qvN4zgP0H2xd+5MaKAOTXkmFm3yKpr76cZ0fvkytB9MuJyPn1RRmgfaY1Edu8XpRcMZ1JbphmrnkmhxE4NST6q/Zmbef7NB9M91WCTA3L+ug3XsiaXW/RBcKm3o1Ix3IEgjTxmELXXYi9ghLB7RnHtkdnvQl4GXXejhKis1qo7pyW9IU1EBePQlKlnJ9I1ViWZGG96ehnwk4acUjTfKGfAd4JuQTJ75zTAia/5HCGRJqAHxVTcPOb01R4awjbJ8Xdr3RdgQHscDd02ZiwzK5iVosEmC2aQFMqd1iXWSbJ1Md1bKGWLMSqA2BkhcrmPPYmBmxSETuncgBCNPNjDlk6vTmYs/R8YlCYiD5XassbYw93zkYQGnNcxHfTp8yUfh6qLenRtyWjk/gUT7L7fNwfmUY1M7fxn3hHcLsEtpXe9E8+c+Rdi+QdskIG0I1ORi/ETMxoylGHBYemMhRzNSwhMVIf4koh2vQRqVzKMs8NLpS3Wsu+XQUVtHtjPK84v34Fv4frdqgY1HIECxmJZSu76W74vDFixUoshBr35woZoCi1fSQdXSZIQ1GYj+75JlGzOgFQcJzxLfV0adCa9peoox8N732euHmvoXLoaMOxtkATsOy4HykJV8vu+zJ3xHULCaFoYv2hbiPTmrJ9P0lx3Bul47mPxkzoAiKJpmODUvrBJx2oyP7qGMcRnqAQUohc2Fq49nMHZHf6ipl6r4qZDp13CjMpsnFCMmQkFcy+xkXrzahrlyO9nsJ64zwSr/mbGKmlf1jVIBOJp51pMiiTXhj0</token>
-    </properties>
-
     <dependencies>
         <dependency>
             <groupId>io.appium</groupId>
@@ -22,6 +18,12 @@
             <groupId>org.testng</groupId>
             <artifactId>testng</artifactId>
             <version>7.1.0</version>
+        </dependency>
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <version>RELEASE</version>
+            <scope>compile</scope>
         </dependency>
     </dependencies>
 
@@ -36,8 +38,7 @@
                         <suiteXmlFile>${suite.file}</suiteXmlFile>
                     </suiteXmlFiles>
                     <systemPropertyVariables>
-                        <!--<ts.appium>http://localhost:4723/wd/hub</ts.appium>-->
-                        <ts.appium>https://EPM-TSTF:${token}@mobilecloud.epam.com/wd/hub</ts.appium>
+                        <token></token>
                     </systemPropertyVariables>
                 </configuration>
             </plugin>
@@ -54,27 +55,25 @@
 
     <profiles>
         <profile>
-            <id>native</id>
+            <id>nativeLocalAndroid</id>
             <activation>
                 <activeByDefault>false</activeByDefault>
             </activation>
             <properties>
-                <suite.file>src/test/resources/nativeTNG.xml</suite.file>
+                <suite.file>src/test/resources/nativeLocalAndroid.xml</suite.file>
             </properties>
         </profile>
-
         <profile>
-            <id>web</id>
+            <id>webLocalAndroid</id>
             <activation>
                 <activeByDefault>true</activeByDefault>
             </activation>
             <properties>
-                <suite.file>./src/test/resources/webTNG.xml</suite.file>
+                <suite.file>./src/test/resources/webLocalAndroid.xml</suite.file>
             </properties>
         </profile>
-
         <profile>
-            <id>web</id>
+            <id>webCloudAndroid</id>
             <activation>
                 <activeByDefault>false</activeByDefault>
             </activation>
@@ -82,14 +81,31 @@
                 <suite.file>./src/test/resources/webCloudAndroid.xml</suite.file>
             </properties>
         </profile>
-
         <profile>
-            <id>web</id>
+            <id>webCloudIOS</id>
             <activation>
                 <activeByDefault>false</activeByDefault>
             </activation>
             <properties>
                 <suite.file>./src/test/resources/webCloudIOS.xml</suite.file>
+            </properties>
+        </profile>
+        <profile>
+            <id>nativeCloudIOS</id>
+            <activation>
+                <activeByDefault>false</activeByDefault>
+            </activation>
+            <properties>
+                <suite.file>./src/test/resources/nativeCloudIOS.xml</suite.file>
+            </properties>
+        </profile>
+        <profile>
+            <id>nativeCloudAndroid</id>
+            <activation>
+                <activeByDefault>false</activeByDefault>
+            </activation>
+            <properties>
+                <suite.file>src/test/resources/nativeCloudAndroid.xml</suite.file>
             </properties>
         </profile>
     </profiles>

@@ -3,34 +3,40 @@ package scenarios;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.annotations.Test;
 import setup.BaseTest;
 import setup.DataProviders;
 
-public class WebMobileTests extends BaseTest {
+import java.util.Objects;
 
-    @Test(groups = {"web"}, description = "Google search result test",
+import static org.testng.Assert.assertTrue;
+
+public class WebAndroidTests extends BaseTest {
+
+    @Test(description = "Google search result test",
             dataProvider = "dataProviderForWebTest", dataProviderClass = DataProviders.class)
-    public void simpleWebTest(String appType, String url, String pageTitle, String searchPhrase) throws Exception {
+    public void simpleWebTest(String url, String pageTitle, String searchPhrase) throws Exception {
 
         // Open page
         getDriver().get(url);
 
         // Make sure that page has been loaded completely
-        new WebDriverWait(getDriver(), 20).until(
+        new WebDriverWait(getDriver(), 70).until(
                 wd -> ((JavascriptExecutor) wd).executeScript("return document.readyState").equals("complete"));
 
         // Check page title
         assert ((WebDriver) getDriver()).getTitle().equals(pageTitle) : "This is not Google page";
 
-        // Set opened page
-        setPageObject(appType, getDriver());
-
-        // Check that 1st search result contains searchPhrase
+        // Search
         getPage().getWebElement("searchField").sendKeys(searchPhrase, Keys.ENTER);
-        System.out.println(getPage().getWebElements("searchResults").get(0).getText());
-        assert (getPage().getWebElements("searchResults").get(0).getText().contains(searchPhrase));
-    }
 
+        // Check that 2nd search result contains searchPhrase
+        assertTrue(getPage().getWebElements("searchResults").stream()
+                .map(WebElement::getText)
+                .filter(Objects::nonNull)
+                .map(String::trim)
+                .anyMatch(text -> text.toLowerCase().contains(searchPhrase.toLowerCase())));
+    }
 }
