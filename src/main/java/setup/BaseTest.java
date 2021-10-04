@@ -14,7 +14,7 @@ import java.util.concurrent.TimeUnit;
 public class BaseTest implements IDriver {
 
     private static AppiumDriver<? extends WebElement> appiumDriver;
-    IPageObject page;
+    static IPageObject page;
 
     @Override
     public AppiumDriver<? extends WebElement> getDriver() {

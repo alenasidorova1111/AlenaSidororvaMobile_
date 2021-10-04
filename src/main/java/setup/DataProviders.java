@@ -1,31 +1,34 @@
 package setup;
 
+import com.google.gson.Gson;
+import entities.NativeAndroidTestData;
+import entities.WebTestData;
 import org.testng.annotations.DataProvider;
+
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.Reader;
 
 public class DataProviders {
 
     @DataProvider(name = "dataProviderForNativeTest")
-    public static Object[][] dataProviderForNativeTest() {
-        String email = "sid@gmail.com";
-        String username = "Sid";
-        String password = "passSid12345";
-        String pageTitle = "BudgetActivity";
+    public static Object[][] dataProviderForNativeTest() throws FileNotFoundException {
+        Reader reader = new FileReader("src/test/resources/testData/DataForNativeAndroidTests.json");
+        NativeAndroidTestData data = new Gson().fromJson(reader, NativeAndroidTestData.class);
 
         return new Object[][]{
-                {email, username, password, pageTitle},
+                {data.getEmail(), data.getUsername(), data.getPassword(), data.getPageTitle()},
         };
     }
+
 
     @DataProvider(name = "dataProviderForWebTest")
-    public static Object[][] dataProviderForWebTest() {
-        String URL = "https://www.google.com/";
-        String pageTitle = "Google";
-        String searchPhrase = "EPAM";
-        String appType = "web";
+    public static Object[][] dataProviderForWebTest() throws FileNotFoundException {
+        Reader reader = new FileReader("src/test/resources/testData/DataForWebTests.json");
+        WebTestData data = new Gson().fromJson(reader, WebTestData.class);
 
         return new Object[][]{
-                {appType, URL, pageTitle, searchPhrase},
+                {data.getURL(), data.getPageTitle(), data.getSearchPhrase()},
         };
     }
-
 }
