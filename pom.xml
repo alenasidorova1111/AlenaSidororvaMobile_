@@ -38,7 +38,7 @@
                         <suiteXmlFile>${suite.file}</suiteXmlFile>
                     </suiteXmlFiles>
                     <systemPropertyVariables>
-                        <token></token>
+                        <token>YourToken</token>
                     </systemPropertyVariables>
                 </configuration>
             </plugin>
