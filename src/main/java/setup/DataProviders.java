@@ -14,7 +14,7 @@ public class DataProviders {
 
     @DataProvider(name = "dataProviderForNativeTest")
     public static Object[][] dataProviderForNativeTest() throws IOException {
-        Reader reader = new FileReader("src/test/resources/testData/DataForNativeAndroidTests.json");
+        Reader reader = new FileReader("src/test/resources/DataForNativeAndroidTests.json");
         NativeAndroidTestData data = new Gson().fromJson(reader, NativeAndroidTestData.class);
 
         return new Object[][]{
@@ -24,7 +24,7 @@ public class DataProviders {
 
     @DataProvider(name = "dataProviderForNativeIOSTest")
     public static Object[][] dataProviderForNativeIOSTest() throws FileNotFoundException {
-        Reader reader = new FileReader("src/test/resources/testData/DataForNativeIOSTests.json");
+        Reader reader = new FileReader("src/test/resources/DataForNativeIOSTests.json");
         NativeAndroidTestData data = new Gson().fromJson(reader, NativeAndroidTestData.class);
 
         return new Object[][]{
@@ -34,7 +34,7 @@ public class DataProviders {
 
     @DataProvider(name = "dataProviderForWebTest")
     public static Object[][] dataProviderForWebTest() throws FileNotFoundException {
-        Reader reader = new FileReader("src/test/resources/testData/DataForWebTests.json");
+        Reader reader = new FileReader("src/test/resources/DataForWebTests.json");
         WebTestData data = new Gson().fromJson(reader, WebTestData.class);
 
         return new Object[][]{
