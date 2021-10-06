@@ -1,0 +1,13 @@
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+<suite name="Web mobile testing Suite">
+    <parameter name="cloud" value="false"/>
+    <parameter name="appType" value="web"/>
+    <parameter name="deviceName" value="emulator-5554"/>
+    <parameter name="platformName" value="Android"/>
+    <parameter name="browserName" value="Chrome"/>
+    <test name="Web tests">
+        <classes>
+            <class name="scenarios.WebAndroidTests"/>
+        </classes>
+    </test>
+</suite>

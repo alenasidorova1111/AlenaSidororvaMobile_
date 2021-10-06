@@ -4,8 +4,8 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>com.epam.mtat</groupId>
-    <artifactId>mobileTaTrainingV2</artifactId>
+    <groupId>com.epam.tc</groupId>
+    <artifactId>AlenaSidorovaMobile</artifactId>
     <version>1.0-SNAPSHOT</version>
 
     <dependencies>
@@ -18,6 +18,12 @@
             <groupId>org.testng</groupId>
             <artifactId>testng</artifactId>
             <version>7.1.0</version>
+        </dependency>
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <version>RELEASE</version>
+            <scope>compile</scope>
         </dependency>
     </dependencies>
 
@@ -32,7 +38,7 @@
                         <suiteXmlFile>${suite.file}</suiteXmlFile>
                     </suiteXmlFiles>
                     <systemPropertyVariables>
-                        <ts.appium>http://localhost:4723/wd/hub</ts.appium>
+                        <token>YourToken</token>
                     </systemPropertyVariables>
                 </configuration>
             </plugin>
@@ -49,25 +55,59 @@
 
     <profiles>
         <profile>
-            <id>native</id>
+            <id>nativeLocalAndroid</id>
             <activation>
                 <activeByDefault>false</activeByDefault>
             </activation>
             <properties>
-                <suite.file>src/test/resources/nativeTNG.xml</suite.file>
+                <suite.file>src/test/resources/nativeLocalAndroid.xml</suite.file>
             </properties>
         </profile>
-
         <profile>
-            <id>web</id>
+            <id>webLocalAndroid</id>
             <activation>
                 <activeByDefault>true</activeByDefault>
             </activation>
             <properties>
-                <suite.file>./src/test/resources/webTNG.xml</suite.file>
+                <suite.file>./src/test/resources/webLocalAndroid.xml</suite.file>
+            </properties>
+        </profile>
+        <profile>
+            <id>webCloudAndroid</id>
+            <activation>
+                <activeByDefault>false</activeByDefault>
+            </activation>
+            <properties>
+                <suite.file>./src/test/resources/webCloudAndroid.xml</suite.file>
+            </properties>
+        </profile>
+        <profile>
+            <id>webCloudIOS</id>
+            <activation>
+                <activeByDefault>false</activeByDefault>
+            </activation>
+            <properties>
+                <suite.file>./src/test/resources/webCloudIOS.xml</suite.file>
+            </properties>
+        </profile>
+        <profile>
+            <id>nativeCloudIOS</id>
+            <activation>
+                <activeByDefault>false</activeByDefault>
+            </activation>
+            <properties>
+                <suite.file>./src/test/resources/nativeCloudIOS.xml</suite.file>
+            </properties>
+        </profile>
+        <profile>
+            <id>nativeCloudAndroid</id>
+            <activation>
+                <activeByDefault>false</activeByDefault>
+            </activation>
+            <properties>
+                <suite.file>src/test/resources/nativeCloudAndroid.xml</suite.file>
             </properties>
         </profile>
     </profiles>
-
 
 </project>

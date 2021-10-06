@@ -1,0 +1,13 @@
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+<suite name="Cloud native IOS testing Suite">
+    <parameter name="cloud" value="true"/>
+    <parameter name="appType" value="native"/>
+    <parameter name="udid" value="8e1df55ebba9781d0f2a7ef801b82e262227a2fe"/>
+    <parameter name="platformName" value="iOS"/>
+    <parameter name="bundleId" value="com.epam.EPAMTestApp.ii"/>
+    <test name="Cloud native IOS tests">
+        <classes>
+            <class name="scenarios.NativeIOSTests"/>
+        </classes>
+    </test>
+</suite>
